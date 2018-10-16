@@ -1,27 +1,41 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Nav from './Nav'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'axios/dist/axios.min.js'
+import './index.css';
 
-class App extends Component {
-  render() {
+
+class App extends React.Component {
+  constructor(props){
+    super(props)
+
+    this.handleSearchTerm = this.handleSearchTerm.bind(this)
+    this.handleSearchClick = this.handleSearchClick.bind(this);
+  }
+
+
+  state = {
+    currentSearchTerm: ''
+  }
+
+
+  handleSearchTerm(input){
+    this.setState({currentSearchTerm: input.target.value}, function(){
+
+    })
+  }
+handleSearchClick(){
+  console.log(this.state.currentSearchTerm);
+}
+
+  render(){
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="main-App-container container-fluid">
+
+        <Nav searchTerm={this.handleSearchTerm} searchFunction={this.handleSearchClick}/>
+
       </div>
-    );
+    )
   }
 }
 
