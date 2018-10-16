@@ -1,19 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One|Archivo+Black|Permanent+Marker');
+
 .nav-list {
   display: flex;
   flex-direction: row;
   list-style-type: none;
   color: #98878F;
   align-items: center;
+  justify-content: space-evenly;
 }
 
 .nav-list-item {
   padding: 15px;
   transition: 0.8s ease-in-out;
   cursor: pointer;
+  font-family: 'Alfa Slab One', cursive;
 }
 
 .nav-list-item:hover {
   color: #efdede;
+  transform: scale(1.1);
 }
 
 nav {
@@ -25,4 +30,19 @@ nav {
 
 .nav-title {
   font-size: 2.0rem;
+  font-family: 'Permanent Marker';
+}
+
+.searchBar {
+  display: flex;
+}
+
+.searchBtn {
+  background-color: #98878F;
+  color: #494E6B;
+  transition: all 0.8s ease-in-out;
+}
+
+.searchBtn:hover {
+  background-color: #efdede;
 }
