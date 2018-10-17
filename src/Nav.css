@@ -9,6 +9,16 @@
   justify-content: space-evenly;
 }
 
+.nav-list a {
+  color: #98878F;
+  text-decoration: none;
+  transition: 0.8s ease-in-out;
+}
+
+.nav-list a:hover {
+  color: #efdede;
+}
+
 .nav-list-item {
   padding: 15px;
   transition: 0.8s ease-in-out;
@@ -26,6 +36,7 @@ nav {
   display: flex;
   flex-direction: row;
   align-items: center;
+  box-shadow: 1px 1px 1px 1px #98878F;
 }
 
 .nav-title {
@@ -41,8 +52,15 @@ nav {
   background-color: #98878F;
   color: #494E6B;
   transition: all 0.8s ease-in-out;
+  box-shadow: 0px 1px 1px 0px #efdede;
+  margin-left: 5px;
 }
 
 .searchBtn:hover {
   background-color: #efdede;
+  box-shadow: 0px 1px 1px 0px #98878F;
+}
+
+.searchDiv {
+  font-family: 'Alfa Slab One', cursive;
 }
