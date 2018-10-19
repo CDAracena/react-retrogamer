@@ -3,7 +3,7 @@ import Nav from './Nav'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'axios/dist/axios.min.js'
 import './index.css';
-import Dreamcast from './components/Dreamcast';
+import System from './components/System';
 import Home from './components/Home';
 
 
