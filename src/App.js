@@ -1,12 +1,10 @@
 import React from 'react';
-import Nav from './Nav'
+import Nav from './components/Nav'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import System from './components/System';
 import Home from './components/Home';
 import axios from 'axios/dist/axios.min.js';
-
-
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 class App extends React.Component {
@@ -26,13 +24,13 @@ class App extends React.Component {
     proxyUrl: "https://cors-anywhere.herokuapp.com/",
     systemName: '',
     systemImg: '',
-    systemGameList: [],
+    systemGameList: []
   }
 
   getPlatform = () => {
     return axios.get(this.state.proxyUrl + 'https://api-endpoint.igdb.com/platforms/23/', {
       headers: {
-        "user-key": '371118ee5455adc31af2656760ffe051',
+        "user-key": `${process.env.REACT_APP_IGDB_KEY}`,
         Accept: "application/json"
       }
     })
@@ -41,22 +39,21 @@ class App extends React.Component {
   getPlatformGames = () => {
     return axios.get(this.state.proxyUrl + 'https://api-endpoint.igdb.com//games/1218', {
       headers: {
-        "user-key": '371118ee5455adc31af2656760ffe051',
+        "user-key": `${process.env.REACT_APP_IGDB_KEY}`,
         Accept: "application/json"
       }
     })
   }
 
-  makeAPICalls(){
-      axios.all([this.getPlatform(), this.getPlatformGames()]).then(axios.spread(function(platform, games) {
+  makeAPICalls() {
+    axios.all([this.getPlatform(), this.getPlatformGames()]).then(axios.spread(function(platform, games) {
+      this.setState({
+        systemName: platform.data.name,
+        systemImg: platform.data[0].logo.url.replace('thumb', '720p'),
+        systemGameList: platform.data[0].games
+      })
 
-        console.log("response1:" + JSON.stringify(platform.data[0].logo.url.replace('thumb', '720p')))
-        this.setState({
-          systemName: platform.data.name,
-          systemImg: platform.data[0].logo.url.replace('thumb', '720p')
-        })
-
-      }.bind(this)))
+    }.bind(this)))
   }
 
   handleSearchTerm(input) {
@@ -72,7 +69,7 @@ class App extends React.Component {
         <Nav searchTerm={this.handleSearchTerm} searchFunction={this.handleSearchClick}/>
         <Switch>
           <Route exact path="/" component={Home}/>
-          <Route path="/:id" component={System}/>
+          <Route path="/:systemId" render={(props) => <System {...props} systemName="Dreamcast"/>}/>
 
         </Switch>
       </div>
