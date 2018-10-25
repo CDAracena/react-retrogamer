@@ -20,11 +20,27 @@ class App extends React.Component {
 
   state = {
     currentSearchTerm: '',
-    consoleId: '',
     proxyUrl: "https://cors-anywhere.herokuapp.com/",
     systemName: '',
     systemImg: '',
-    systemGameList: []
+    systemGameList: [],
+    consoleIds: [{
+      title: 'dreamcast',
+      consoleId: '23'
+    },
+  {
+    title: 'nintendo64',
+    consoleId:'4'
+  }, {
+    title: "playstation",
+    consoleId: '7'
+  }, {
+    title: 'gamecube',
+    consoleId: '21'
+  }, {
+    title: 'snes',
+    consoleId: '19'
+  }]
   }
 
   getPlatform = () => {
