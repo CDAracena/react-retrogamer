@@ -13,43 +13,16 @@ class App extends React.Component {
 
     this.handleSearchTerm = this.handleSearchTerm.bind(this)
     this.handleSearchClick = this.handleSearchClick.bind(this);
-    this.getPlatform = this.getPlatform.bind(this)
     this.getPlatformGames = this.getPlatformGames.bind(this);
     this.makeAPICalls = this.makeAPICalls.bind(this);
   }
 
   state = {
     currentSearchTerm: '',
-    proxyUrl: "https://cors-anywhere.herokuapp.com/",
     systemName: '',
     systemImg: '',
     systemGameList: [],
-    consoleIds: [{
-      title: 'dreamcast',
-      consoleId: '23'
-    },
-  {
-    title: 'nintendo64',
-    consoleId:'4'
-  }, {
-    title: "playstation",
-    consoleId: '7'
-  }, {
-    title: 'gamecube',
-    consoleId: '21'
-  }, {
-    title: 'snes',
-    consoleId: '19'
-  }]
-  }
 
-  getPlatform = () => {
-    return axios.get(this.state.proxyUrl + 'https://api-endpoint.igdb.com/platforms/23/', {
-      headers: {
-        "user-key": `${process.env.REACT_APP_IGDB_KEY}`,
-        Accept: "application/json"
-      }
-    })
   }
 
   getPlatformGames = () => {
@@ -70,6 +43,7 @@ class App extends React.Component {
       })
 
     }.bind(this)))
+    console.log(this.state.systemGameList)
   }
 
   handleSearchTerm(input) {
@@ -80,12 +54,13 @@ class App extends React.Component {
   handleSearchClick() {}
 
   render() {
+
     return (<Router>
       <div className="main-App-container container-fluid">
         <Nav searchTerm={this.handleSearchTerm} searchFunction={this.handleSearchClick}/>
         <Switch>
           <Route exact path="/" component={Home}/>
-          <Route path="/:systemId" render={(props) => <System {...props} systemName="Dreamcast"/>}/>
+          <Route path="/:systemId" render={(props) => <System {...props}/>}/>
 
         </Switch>
       </div>
