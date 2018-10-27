@@ -4,12 +4,15 @@ import axios from 'axios/dist/axios.min.js';
 class System extends React.Component {
   constructor(props) {
     super(props)
+
+    this.getPlatform = this.getPlatform.bind(this)
   }
 
   state = {
     systemName: '',
     systemImg: '',
-    systemIds: [
+    systemId: '',
+    systems: [
       {
         title: 'dreamcast',
         consoleId: '23'
@@ -30,8 +33,8 @@ class System extends React.Component {
     proxyUrl: "https://cors-anywhere.herokuapp.com/"
   }
 
-  componentDidMount() {
-    const currentSystem = this.state.systemIds.filter(system => system.title === this.props.match.params.systemId)
+  getPlatform(){
+    const currentSystem = this.state.systems.filter(system => system.title === this.props.match.params.systemId)
     axios.get(this.state.proxyUrl + `https://api-endpoint.igdb.com/platforms/${currentSystem[0].consoleId}/`, {
       headers: {
         "user-key": `${process.env.REACT_APP_IGDB_KEY}`,
@@ -39,11 +42,29 @@ class System extends React.Component {
       }
     }).then(function(response) {
       this.setState({
-        systemName: response.data.name,
-        systemImg: response.data[0].logo.url.replace('thumb', '720p')
+        systemName: response.data[0].name,
+        systemImg: response.data[0].logo.url.replace('thumb', '720p'),
+        systemId: currentSystem[0].consoleId
       })
     }.bind(this))
   }
+
+  componentDidMount() {
+    this.getPlatform();
+  }
+
+  componentWillReceiveProps(nextProps){
+    if (this.props.match.params.systemId != nextProps.match.params.systemId){
+      this.props.match.params.systemId = nextProps.match.params.systemId;
+      this.getPlatform();
+
+  } else {
+    console.log('Params do match')
+  }
+
+  }
+
+
 
   componentWillUnmount() {}
   render() {
