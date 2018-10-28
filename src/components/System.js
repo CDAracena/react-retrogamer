@@ -33,7 +33,7 @@ class System extends React.Component {
     proxyUrl: "https://cors-anywhere.herokuapp.com/"
   }
 
-  getPlatform(){
+  getPlatform() {
     const currentSystem = this.state.systems.filter(system => system.title === this.props.match.params.systemId)
     axios.get(this.state.proxyUrl + `https://api-endpoint.igdb.com/platforms/${currentSystem[0].consoleId}/`, {
       headers: {
@@ -41,11 +41,13 @@ class System extends React.Component {
         Accept: "application/json"
       }
     }).then(function(response) {
-      this.setState({
-        systemName: response.data[0].name,
-        systemImg: response.data[0].logo.url.replace('thumb', '720p'),
-        systemId: currentSystem[0].consoleId
-      })
+      let systemImage;
+      if (currentSystem[0].title === 'nintendo64') {
+        systemImage = response.data[0].versions[0].logo.url.replace('thumb', '720p')
+      } else {
+        systemImage = response.data[0].logo.url.replace('thumb', '720p')
+      }
+      this.setState({systemName: response.data[0].name, systemImg: systemImage, systemId: currentSystem[0].consoleId})
     }.bind(this))
   }
 
@@ -53,18 +55,16 @@ class System extends React.Component {
     this.getPlatform();
   }
 
-  componentWillReceiveProps(nextProps){
-    if (this.props.match.params.systemId != nextProps.match.params.systemId){
+  componentWillReceiveProps(nextProps) {
+    if (this.props.match.params.systemId !== nextProps.match.params.systemId) {
       this.props.match.params.systemId = nextProps.match.params.systemId;
       this.getPlatform();
 
-  } else {
-    console.log('Params do match')
-  }
+    } else {
+      console.log('Params do match')
+    }
 
   }
-
-
 
   componentWillUnmount() {}
   render() {
