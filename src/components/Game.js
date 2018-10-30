@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Game = ({name})=>(
+const Game = ({name, img, screenshots, category, publishers, storyline})=>(
   <div>
 
   </div>
