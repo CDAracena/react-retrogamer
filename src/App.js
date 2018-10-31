@@ -5,7 +5,7 @@ import './index.css';
 import System from './components/System';
 import Home from './components/Home';
 import axios from 'axios/dist/axios.min.js';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, withRoute} from 'react-router-dom';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,8 +13,7 @@ class App extends React.Component {
 
     this.handleSearchTerm = this.handleSearchTerm.bind(this)
     this.handleSearchClick = this.handleSearchClick.bind(this);
-    this.getPlatformGames = this.getPlatformGames.bind(this);
-    this.makeAPICalls = this.makeAPICalls.bind(this);
+
   }
 
   state = {
@@ -25,26 +24,6 @@ class App extends React.Component {
 
   }
 
-  getPlatformGames = () => {
-    return axios.get(this.state.proxyUrl + 'https://api-endpoint.igdb.com//games/1218', {
-      headers: {
-        "user-key": `${process.env.REACT_APP_IGDB_KEY}`,
-        Accept: "application/json"
-      }
-    })
-  }
-
-  makeAPICalls() {
-    axios.all([this.getPlatform(), this.getPlatformGames()]).then(axios.spread(function(platform, games) {
-      this.setState({
-        systemName: platform.data.name,
-        systemImg: platform.data[0].logo.url.replace('thumb', '720p'),
-        systemGameList: platform.data[0].games
-      })
-
-    }.bind(this)))
-    console.log(this.state.systemGameList)
-  }
 
   handleSearchTerm(input) {
     this.setState({
