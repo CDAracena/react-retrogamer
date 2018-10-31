@@ -1,17 +1,21 @@
 import React from 'react';
 import axios from 'axios/dist/axios.min.js';
+import GameList from './GameList';
 
 class System extends React.Component {
   constructor(props) {
     super(props)
 
-    this.getPlatform = this.getPlatform.bind(this)
+    this.getPlatform = this.getPlatform.bind(this);
+    this.getPlatformGames = this.getPlatformGames.bind(this);
   }
 
   state = {
     systemName: '',
     systemImg: '',
     systemId: '',
+    systemGamesIds: [],
+    systemGames: [],
     systems: [
       {
         title: 'dreamcast',
@@ -41,15 +45,34 @@ class System extends React.Component {
         Accept: "application/json"
       }
     }).then(function(response) {
+
       let systemImage;
       if (currentSystem[0].title === 'nintendo64') {
         systemImage = response.data[0].versions[0].logo.url.replace('thumb', '720p')
       } else {
         systemImage = response.data[0].logo.url.replace('thumb', '720p')
       }
-      this.setState({systemName: response.data[0].name, systemImg: systemImage, systemId: currentSystem[0].consoleId})
+      this.setState({systemName: response.data[0].name, systemImg: systemImage, systemId: currentSystem[0].consoleId, systemGamesIds:response.data[0].games.slice(0, 25)})
+
+      this.getPlatformGames();
+
     }.bind(this))
   }
+
+  getPlatformGames(){
+    this.state.systemGamesIds.map(gameId => {
+      axios.get(this.state.proxyUrl + `https://api-endpoint.igdb.com/games/${gameId}/`, {
+        headers: {
+          "user-key": `${process.env.REACT_APP_IGDB_KEY}`,
+          Accept: "application/json"
+        }
+      }).then(function(response){
+        this.setState({systemGames: [...this.state.systemGames, response.data[0]]})
+          console.log(this.state.systemGames)
+      }.bind(this))
+    })
+
+     }
 
   componentDidMount() {
     this.getPlatform();
@@ -59,11 +82,7 @@ class System extends React.Component {
     if (this.props.match.params.systemId !== nextProps.match.params.systemId) {
       this.props.match.params.systemId = nextProps.match.params.systemId;
       this.getPlatform();
-
-    } else {
-      console.log('Params do match')
     }
-
   }
 
   componentWillUnmount() {}
@@ -80,7 +99,7 @@ class System extends React.Component {
       </div>
       <div className="row">
         <div className="col-lg-4">
-          <ul></ul>
+          <GameList games={this.state.systemGames}/>
         </div>
       </div>
     </div>)
