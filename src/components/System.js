@@ -60,6 +60,9 @@ class System extends React.Component {
   }
 
   getPlatformGames(){
+    if (this.state.systemGames){
+      this.setState({systemGames: []})
+    }
     this.state.systemGamesIds.map(gameId => {
       axios.get(this.state.proxyUrl + `https://api-endpoint.igdb.com/games/${gameId}/`, {
         headers: {
@@ -68,7 +71,7 @@ class System extends React.Component {
         }
       }).then(function(response){
         this.setState({systemGames: [...this.state.systemGames, response.data[0]]})
-          console.log(this.state.systemGames)
+        console.log(this.state.systemGames)
       }.bind(this))
     })
 
