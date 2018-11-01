@@ -5,7 +5,9 @@ import Game from './Game'
 const GameList = ({games}) => {
   return (
     <div>
-      {games.length};
+      <ul>
+        {games.map(game => <li key={game.id}> <Game name={game.name}/> </li>)}
+      </ul>
     </div>
   )
 }
