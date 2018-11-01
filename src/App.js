@@ -4,8 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import System from './components/System';
 import Home from './components/Home';
-import axios from 'axios/dist/axios.min.js';
-import {BrowserRouter as Router, Route, Switch, withRoute} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 class App extends React.Component {
   constructor(props) {
@@ -18,10 +17,6 @@ class App extends React.Component {
 
   state = {
     currentSearchTerm: '',
-    systemName: '',
-    systemImg: '',
-    systemGameList: [],
-
   }
 
 
