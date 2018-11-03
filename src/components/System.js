@@ -90,7 +90,7 @@ class System extends React.Component {
 
   componentWillUnmount() {}
   render() {
-    return (<div className="container">
+    return (<div className="container-fluid">
       <div className="row">
         <div className="col-lg-12 systemHeader">
           {this.state.systemName}
@@ -101,7 +101,7 @@ class System extends React.Component {
 
       </div>
       <div className="row">
-        <div className="col-lg-4">
+        <div className="col-lg">
           <GameList games={this.state.systemGames}/>
         </div>
       </div>
