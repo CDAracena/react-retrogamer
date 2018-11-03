@@ -1,0 +1,16 @@
+.game-card-row {
+  margin: 0px;
+  box-shadow: 1px 1px 1px 1px lightgray;
+}
+
+.img-section {
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+.game-screenshots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}

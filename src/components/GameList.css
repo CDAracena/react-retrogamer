@@ -2,4 +2,9 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  list-style-type: none;
+}
+
+.game-card-container {
+  max-width: 600px;
 }

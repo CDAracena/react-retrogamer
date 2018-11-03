@@ -8,7 +8,7 @@ const GameList = ({games}) => {
   return (
     <div>
       <ul className="game-list-container">
-        {games.map(game => <li key={game.id} className="game-list-list-item"> <Game name={game.name}/> </li>)}
+        {games.map(game => <li key={game.id} className="game-list-list-item"> <Game name={game.name} img={game.cover.url.replace('thumb', '720p')} rating={game.total_rating} summary={game.summary} screenshots={game.screenshots}/> </li>)}
       </ul>
     </div>
   )

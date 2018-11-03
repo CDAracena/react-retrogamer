@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios/dist/axios.min.js';
 import GameList from './GameList';
+import './System.css';
 
 class System extends React.Component {
   constructor(props) {
@@ -90,21 +91,19 @@ class System extends React.Component {
 
   componentWillUnmount() {}
   render() {
-    return (<div className="container-fluid">
+    return (<div className="container-fluid main-system-gamelist-container">
       <div className="row">
-        <div className="col-lg-12 systemHeader">
+        <div className="col-lg-4 systemHeader">
           {this.state.systemName}
           <div className="col-lg-12 systemImg">
-            <img src={'https:' + this.state.systemImg} alt={this.state.systemName}/>
+            <img src={'https:' + this.state.systemImg} alt={this.state.systemName} className="systemImg"/>
           </div>
         </div>
-
-      </div>
-      <div className="row">
-        <div className="col-lg">
+        <div className="col-lg-8">
           <GameList games={this.state.systemGames}/>
         </div>
       </div>
+
     </div>)
   }
 }
