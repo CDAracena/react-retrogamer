@@ -14,3 +14,13 @@
   flex-wrap: wrap;
   justify-content: space-around;
 }
+
+.screenshot-img {
+  transition: transform 0.8s ease-in-out;
+  width: 150px;
+  height: 100px;
+}
+
+.screenshot-img:hover {
+  transform: scale(1.5);
+}
