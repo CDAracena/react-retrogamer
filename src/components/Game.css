@@ -24,3 +24,11 @@
 .screenshot-img:hover {
   transform: scale(1.5);
 }
+
+.game-info-col {
+  padding-left: 25px;
+}
+
+.main-game-img {
+  border-radius: 5px;
+}
