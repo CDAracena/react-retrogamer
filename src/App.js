@@ -23,9 +23,11 @@ class App extends React.Component {
   handleSearchTerm(input) {
     this.setState({
       currentSearchTerm: input.target.value
-    }, function() {})
+    })
   }
-  handleSearchClick() {}
+  handleSearchClick() {
+    console.log(this.state.currentSearchTerm)
+  }
 
   render() {
 
