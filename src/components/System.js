@@ -72,7 +72,6 @@ class System extends React.Component {
         }
       }).then(function(response){
         this.setState({systemGames: [...this.state.systemGames, response.data[0]]})
-        console.log(this.state.systemGames)
       }.bind(this))
     })
 
