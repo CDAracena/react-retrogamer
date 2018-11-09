@@ -1,11 +1,22 @@
 .game-card-row {
   margin: 0px;
   box-shadow: 1px 1px 1px 1px lightgray;
-  padding-top: 15px;
+}
+
+.game-card-container {
+  margin-top: 15px;
+  max-height: 600px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  box-shadow: 2px 2px 2px 1px #494e6b;
+  border-radius: 5px;
+}
+
+.game-card-container:hover {
+  box-shadow: 2px 2px 2px 2px #494e6b;
 }
 
 .img-section {
-  padding: 0px;
   display: flex;
   flex-direction: column;
 }
@@ -14,6 +25,9 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  padding-top: 5px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .screenshot-img {
@@ -28,22 +42,15 @@
 
 .game-info-col {
   padding-left: 25px;
+  font-family: "Alfa Slab One", cursive;
+}
+
+.game-title {
+  font-family: 'Permanent Marker';
+  color: #494e6b;
+  font-size: 1.3rem;
 }
 
 .main-game-img {
   border-radius: 5px;
-}
-
-.game-title {
-  color: #494e6b;
-  font-family: 'Permanent Marker';
-}
-
-.game-info-col {
-  font-family: 'Alfa Slab One', cursive;
-}
-
-.game-summary {
-  line-height: 1.45;
-  padding-top: 5px;
 }
