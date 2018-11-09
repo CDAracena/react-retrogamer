@@ -1,6 +1,7 @@
 .game-card-row {
   margin: 0px;
   box-shadow: 1px 1px 1px 1px lightgray;
+  padding-top: 15px;
 }
 
 .img-section {
@@ -31,4 +32,18 @@
 
 .main-game-img {
   border-radius: 5px;
+}
+
+.game-title {
+  color: #494e6b;
+  font-family: 'Permanent Marker';
+}
+
+.game-info-col {
+  font-family: 'Alfa Slab One', cursive;
+}
+
+.game-summary {
+  line-height: 1.45;
+  padding-top: 5px;
 }

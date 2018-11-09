@@ -20,7 +20,7 @@ const Game = ({
             width: '250px'
           }}></div>
         <div className="game-screenshots col-lg-12">
-          {screenshots ? screenshots.map(screenshot => <img key={screenshot.cloudinary_id} src={`https:${screenshot.url.replace('thumb', '720p')}`} className="screenshot-img"/>) : 'No screenshots available'}
+          {screenshots ? screenshots.map(screenshot => <img key={screenshot.cloudinary_id} src={`https:${screenshot.url.replace('thumb', '720p')}`} className="screenshot-img" alt={`Screenshots of ${name}`}/>) : 'No screenshots available'}
         </div>
       </div>
     </div>
@@ -30,7 +30,7 @@ const Game = ({
           {name}
         </div>
         <div className="col-lg-6 game-rating">
-          {Math.round(rating)}/100
+          <span>{Math.round(rating)}/100 </span>
         </div>
       </div>
       <div className="row">
