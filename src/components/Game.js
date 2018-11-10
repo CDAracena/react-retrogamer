@@ -26,10 +26,10 @@ const Game = ({
     </div>
     <div className="game-info-col col-lg-6">
       <div className="row">
-        <div className="col-lg-6 game-title">
+        <div className="col-lg-8 game-title">
           {name}
         </div>
-        <div className="col-lg-6 game-rating">
+        <div className="col-lg-4 game-rating">
           {Math.round(rating)}/100
         </div>
       </div>
