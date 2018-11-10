@@ -5,11 +5,12 @@
 
 .game-card-container {
   margin-top: 15px;
-  max-height: 600px;
+  max-height: 500px;
   text-overflow: ellipsis;
   overflow: hidden;
   box-shadow: 2px 2px 2px 1px #494e6b;
   border-radius: 5px;
+  height: 500px
 }
 
 .game-card-container:hover {
@@ -43,6 +44,7 @@
 .game-info-col {
   padding-left: 25px;
   font-family: "Alfa Slab One", cursive;
+  padding-top: 10px;
 }
 
 .game-title {
