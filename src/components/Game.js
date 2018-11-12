@@ -20,7 +20,7 @@ const Game = ({
             width: '250px'
           }}></div>
         <div className="game-screenshots col-lg-12">
-          {screenshots ? screenshots.slice(0,4).map(screenshot => <img key={screenshot.cloudinary_id} src={`https:${screenshot.url.replace('thumb', '720p')}`} className="screenshot-img"/>) : 'No screenshots available'}
+          {screenshots ? screenshots.slice(0,4).map(screenshot => <img  alt={`Screenshot${screenshot.cloudinary_id}`} key={screenshot.cloudinary_id} src={`https:${screenshot.url.replace('thumb', '720p')}`} className="screenshot-img"/>) : 'No screenshots available'}
         </div>
       </div>
     </div>

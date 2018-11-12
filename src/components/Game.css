@@ -1,6 +1,5 @@
 .game-card-row {
   margin: 0px;
-  box-shadow: 1px 1px 1px 1px lightgray;
 }
 
 .game-card-container {
@@ -11,6 +10,10 @@
   box-shadow: 2px 2px 2px 1px #494e6b;
   border-radius: 5px;
   height: 500px
+}
+
+.game-summary {
+  font-size: 0.90rem;
 }
 
 .game-card-container:hover {
