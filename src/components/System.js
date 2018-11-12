@@ -92,7 +92,7 @@ class System extends React.Component {
   render() {
     return (<div className="container-fluid main-system-gamelist-container">
       <div className="row">
-        <div className="col-lg-4 systemHeader">
+        <div className="col-lg-2 systemHeader">
           {this.state.systemName}
           <div className="col-lg-12 systemImg">
             <img src={'https:' + this.state.systemImg} alt={this.state.systemName} className="systemImg"/>
