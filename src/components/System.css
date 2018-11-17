@@ -5,3 +5,11 @@
 .main-system-gamelist-container {
   padding: 25px;
 }
+
+.systemHeader {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: 'Permanent Marker';
+  color: #494e6b;
+}
