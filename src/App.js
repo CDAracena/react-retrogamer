@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import System from './components/System';
 import Home from './components/Home';
+import SearchResults from './components/SearchResults';
 import axios from 'axios/dist/axios.min.js';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
@@ -23,6 +24,9 @@ class App extends React.Component {
 
   handleSearchTerm(input) {
     this.setState({currentSearchTerm: input.target.value})
+    return (
+      <SearchResults/>
+    )
   }
 
   handleSearchClick() {
@@ -60,6 +64,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route path="/:systemId" render={(props) => <System {...props}/>}/>
+          <Route path="/searchresults" component={SearchResults}/>
         </Switch>
       </div>
     </Router>)
